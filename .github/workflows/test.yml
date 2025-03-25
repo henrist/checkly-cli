@@ -35,6 +35,8 @@ jobs:
       - run: npm config set fund false && npm set audit false
       - run: npm ci
       - run: npm run prepack
+      - run: node src/test.js
+        working-directory: packages/cli
       - run: npm run test
       #- run: npm run test:e2e
       #  env:
