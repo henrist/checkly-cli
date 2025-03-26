@@ -107,7 +107,10 @@ let jiti: Jiti
 async function getJiti (): Promise<Jiti | undefined> {
   if (jiti) return jiti
   try {
-    jiti = (await import('jiti')).createJiti(__filename)
+    jiti = (await import('jiti')).createJiti(__filename, {
+      debug: true,
+      fsCache: false,
+    })
   } catch (err: any) {
     if (err.code === 'ERR_MODULE_NOT_FOUND' || err.code === 'MODULE_NOT_FOUND') {
       return undefined
